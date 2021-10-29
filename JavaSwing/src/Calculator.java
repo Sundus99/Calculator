@@ -1,4 +1,4 @@
-
+/**@author Sundus Yawar*/
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
