@@ -51,10 +51,12 @@ ArrayList<String> operator = new ArrayList<String>();
 					}
 				}
 				else if (operator.contains("+") && operator.contains("-")) {
-					subtraction();
-					result ="";
-					//subtraction();
-					System.out.println("   **+&- in +action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					if(!result.isEmpty()) {
+						subtraction();
+						result ="";
+						//subtraction();
+						System.out.println("   **+&- in +action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					}
 				}
 			}
 			else if(e.getActionCommand().equals("-")) {
@@ -74,10 +76,12 @@ ArrayList<String> operator = new ArrayList<String>();
 					}
 				}
 				else if (operator.contains("+") && operator.contains("-")) {
-					addition();
-					result ="";
-					//subtraction();
-					System.out.println("   **+&- in - action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					if(!result.isEmpty()) {
+						addition();
+						result ="";
+						//subtraction();
+						System.out.println("   **+&- in - action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					}
 				}
 			}
 			else if(e.getActionCommand().equals("=")) {
