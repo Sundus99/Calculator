@@ -65,8 +65,11 @@ public class Calculator {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		//frame.setForeground(Color.BLACK);
+		//frame.setBackground(Color.BLACK);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.BLACK);
 		frame.getContentPane().setLayout(null);
 
 		dot = new JButton(".");
@@ -79,13 +82,13 @@ public class Calculator {
 		frame.getContentPane().add(dot);
 
 		zero = new JButton("0");
+		//zero.setForeground(Color.BLACK);
+		//zero.setBorderPainted(false);
+		//zero.setBackground(Color.YELLOW);
 		zero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				m.actionPerformed(e,display);
-//				str = str + zero.getText() + " ";
-//				display.setText(str);
-//				valList.add(zero.getText());
 			}
 		});
 		zero.setBounds(15, 187, 103, 41);
@@ -95,9 +98,6 @@ public class Calculator {
 		one.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + one.getText() + " ";
-//				display.setText(str);
-//				valList.add(one.getText());
 			}
 		});
 		one.setBounds(15, 130, 44, 41);
@@ -107,9 +107,6 @@ public class Calculator {
 		two.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + two.getText() + " ";
-//				display.setText(str);
-//				valList.add(two.getText());
 			}
 		});
 		two.setBounds(74, 130, 44, 41);
@@ -119,9 +116,6 @@ public class Calculator {
 		three.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + three.getText() + " ";
-//				display.setText(str);
-//				valList.add(three.getText());
 			}
 		});
 		three.setBounds(130, 130, 44, 41);
@@ -131,9 +125,6 @@ public class Calculator {
 		four.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + four.getText() + " ";
-//				display.setText(str);
-//				valList.add(four.getText());
 			}
 		});
 		four.setBounds(15, 73, 44, 41);
@@ -143,9 +134,6 @@ public class Calculator {
 		five.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + five.getText() + " ";
-//				display.setText(str);
-//				valList.add(five.getText());
 			}
 		});
 		five.setBounds(74, 73, 44, 41);
@@ -155,9 +143,6 @@ public class Calculator {
 		six.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + six.getText() + " ";
-//				display.setText(str);
-//				valList.add(six.getText());
 			}
 		});
 		six.setBounds(130, 73, 44, 41);
@@ -167,9 +152,6 @@ public class Calculator {
 		seven.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + seven.getText() + " ";
-//				display.setText(str);
-//				valList.add(seven.getText());
 			}
 		});
 		seven.setBounds(15, 16, 44, 41);
@@ -179,9 +161,6 @@ public class Calculator {
 		eight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + eight.getText() + " ";
-//				display.setText(str);
-//				valList.add(eight.getText());
 			}
 		});
 		eight.setBounds(74, 16, 44, 41);
@@ -191,9 +170,6 @@ public class Calculator {
 		nine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + nine.getText() + " ";
-//				display.setText(str);
-//				valList.add(nine.getText());
 			}
 		});
 		nine.setBounds(130, 16, 44, 41);
@@ -203,12 +179,6 @@ public class Calculator {
 		plus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + plus.getText() + " ";
-//				display.setText(str);
-//				// sum =0;
-//				for (String num : valList) {
-//					sum = Integer.parseInt(num) + sum;
-//				}
 			}
 		});
 		plus.setBounds(239, 73, 44, 41);
@@ -218,12 +188,6 @@ public class Calculator {
 		minus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = str + minus.getText() + " ";
-//				display.setText(str);
-//				//sum = 0;
-//				for (String num : valList) {
-//					sum = Integer.parseInt(num) - sum;
-//				}
 			}
 		});
 		minus.setBounds(298, 73, 44, 41);
@@ -233,10 +197,6 @@ public class Calculator {
 		equal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				display.setText(Integer.toString(sum));
-//				str = "";
-//				valList.clear();
-//				sum = 0;
 			}
 		});
 		equal.setBounds(357, 73, 44, 41);
@@ -251,10 +211,6 @@ public class Calculator {
 		C.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
-//				str = "";
-//				valList.clear();
-//				sum = 0;
-//				display.setText("");
 			}
 		});
 		C.setBounds(268, 136, 44, 41);
