@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class Calculator {
 
@@ -33,7 +34,7 @@ public class Calculator {
 	private int sum = 0;
 	private String str = "";
 	private JButton C;
-	private JButton button_1;
+	private JButton x;
 	ListenToAction m = new ListenToAction();
 	/**
 	 * Launch the application.
@@ -65,9 +66,10 @@ public class Calculator {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Calculator.class.getResource("/resources/freepik_calculator.png")));
 		//frame.setForeground(Color.BLACK);
 		//frame.setBackground(Color.BLACK);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 273, 413);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.getContentPane().setLayout(null);
@@ -78,7 +80,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		dot.setBounds(130, 187, 44, 41);
+		dot.setBounds(130, 242, 44, 41);
 		frame.getContentPane().add(dot);
 
 		zero = new JButton("0");
@@ -91,7 +93,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		zero.setBounds(15, 187, 103, 41);
+		zero.setBounds(15, 242, 103, 41);
 		frame.getContentPane().add(zero);
 
 		one = new JButton("1");
@@ -100,7 +102,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		one.setBounds(15, 130, 44, 41);
+		one.setBounds(15, 185, 44, 41);
 		frame.getContentPane().add(one);
 
 		two = new JButton("2");
@@ -109,7 +111,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		two.setBounds(74, 130, 44, 41);
+		two.setBounds(74, 185, 44, 41);
 		frame.getContentPane().add(two);
 
 		three = new JButton("3");
@@ -118,7 +120,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		three.setBounds(130, 130, 44, 41);
+		three.setBounds(130, 185, 44, 41);
 		frame.getContentPane().add(three);
 
 		four = new JButton("4");
@@ -127,7 +129,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		four.setBounds(15, 73, 44, 41);
+		four.setBounds(15, 128, 44, 41);
 		frame.getContentPane().add(four);
 
 		five = new JButton("5");
@@ -136,7 +138,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		five.setBounds(74, 73, 44, 41);
+		five.setBounds(74, 128, 44, 41);
 		frame.getContentPane().add(five);
 
 		six = new JButton("6");
@@ -145,7 +147,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		six.setBounds(130, 73, 44, 41);
+		six.setBounds(130, 128, 44, 41);
 		frame.getContentPane().add(six);
 
 		seven = new JButton("7");
@@ -154,7 +156,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		seven.setBounds(15, 16, 44, 41);
+		seven.setBounds(15, 71, 44, 41);
 		frame.getContentPane().add(seven);
 
 		eight = new JButton("8");
@@ -163,7 +165,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		eight.setBounds(74, 16, 44, 41);
+		eight.setBounds(74, 71, 44, 41);
 		frame.getContentPane().add(eight);
 
 		nine = new JButton("9");
@@ -172,7 +174,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		nine.setBounds(130, 16, 44, 41);
+		nine.setBounds(130, 71, 44, 41);
 		frame.getContentPane().add(nine);
 
 		plus = new JButton("+");
@@ -181,7 +183,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		plus.setBounds(239, 73, 44, 41);
+		plus.setBounds(189, 71, 44, 41);
 		frame.getContentPane().add(plus);
 
 		minus = new JButton("-");
@@ -190,7 +192,7 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		minus.setBounds(298, 73, 44, 41);
+		minus.setBounds(189, 128, 44, 41);
 		frame.getContentPane().add(minus);
 
 		equal = new JButton("=");
@@ -199,26 +201,40 @@ public class Calculator {
 				m.actionPerformed(e,display);
 			}
 		});
-		equal.setBounds(357, 73, 44, 41);
+		equal.setBounds(189, 299, 44, 41);
 		frame.getContentPane().add(equal);
 
 		display = new JTextField();
-		display.setBounds(239, 16, 162, 41);
+		display.setBounds(15, 14, 218, 41);
 		frame.getContentPane().add(display);
 		display.setColumns(10);
 
-		C = new JButton("C");
+		C = new JButton("Clear");
 		C.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.actionPerformed(e,display);
 			}
 		});
-		C.setBounds(268, 136, 44, 41);
+		C.setBounds(15, 299, 159, 41);
 		frame.getContentPane().add(C);
 
-		button_1 = new JButton("+");
-		button_1.setBounds(327, 136, 44, 41);
-		frame.getContentPane().add(button_1);
+		x = new JButton("x");
+		x.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				m.actionPerformed(e,display);
+			}
+		});
+		x.setBounds(189, 185, 44, 41);
+		frame.getContentPane().add(x);
+		
+		JButton div = new JButton("/");
+		div.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				m.actionPerformed(e,display);
+			}
+		});
+		div.setBounds(189, 242, 44, 41);
+		frame.getContentPane().add(div);
 
 	}
 }
