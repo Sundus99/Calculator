@@ -1,0 +1,78 @@
+/**@author Sundus Yawar*/
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JTextField;
+
+public class ListenToAction {
+String result="";
+// newRes;
+int sum =0;
+ArrayList<String> operator = new ArrayList<String>();
+
+		public void actionPerformed(ActionEvent e, JTextField display) {
+			// TODO Auto-generated method stub
+			
+			if(!e.getActionCommand().equals("+") && !e.getActionCommand().equals("=") && !e.getActionCommand().equals("-") && !e.getActionCommand().equals("C")) {
+				display.setText(display.getText()+e.getActionCommand());
+				result = result +e.getActionCommand();
+				//System.out.println("action in if: "+ e.getActionCommand()+" result: "+result);
+				operator.add(e.getActionCommand());
+			}
+			else if(e.getActionCommand().equals("+")) {
+				//display.setText(result);
+				display.setText(display.getText()+e.getActionCommand());
+				sum = sum + Integer.parseInt(result);
+				result = "";
+				operator.add(e.getActionCommand());
+				System.out.println("action in elseif 1: "+ e.getActionCommand()+" result: "+result+" sum: "+sum);
+			}
+			else if(e.getActionCommand().equals("-")) {
+				System.out.println("action in elseif 1");
+				System.out.println("sum before subtraction: "+sum);
+				System.out.println("rsult: "+Integer.parseInt(result));
+				display.setText(display.getText()+e.getActionCommand());
+				if (sum > Integer.parseInt(result))	
+					sum = sum - Integer.parseInt(result);
+				else
+					sum = Integer.parseInt(result) - sum;
+				result = "";
+				operator.add(e.getActionCommand());
+				
+				System.out.println("action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum);
+				
+			}
+			else if(e.getActionCommand().equals("=")) {
+				System.out.println("action in elseif2: "+ e.getActionCommand()+" operator: "+operator+" result: "+result);
+				if(operator.get(operator.size()-2).equals("+")) {
+					sum = sum + Integer.parseInt(result);
+					System.out.println("sum: "+sum);
+					display.setText(Integer.toString(sum));
+					operator.clear();
+				}
+				else {
+					if (sum > Integer.parseInt(result))	
+						sum = sum - Integer.parseInt(result);
+					else
+						sum = Integer.parseInt(result) - sum;
+					System.out.println("sum: "+sum);
+					display.setText(Integer.toString(sum));
+					operator.clear();
+				}
+//				else if(operator.get(operator.size()-2).equals("-")) {
+//					sum = sum - Integer.parseInt(result);
+//					System.out.println("sum: "+sum);
+//					operator.clear();
+//				}
+			}
+			else if (e.getActionCommand().equals("C")) {
+				sum =0;
+				display.setText("");
+				operator.clear();
+				result="";
+			}
+		}
+		
+	
+}
