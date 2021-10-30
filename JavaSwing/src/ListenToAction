@@ -8,23 +8,47 @@ import javax.swing.JTextField;
 public class ListenToAction {
 String result="";
 // newRes;
-int sum =0;
+double sum =0;
 ArrayList<String> operator = new ArrayList<String>();
-		public int addition() {
-			sum = sum + Integer.parseInt(result);
+String r = "";
+		public double addition() {
+			sum = sum + Double.parseDouble(result);
 			return sum;
 		}
-		public int subtraction() {
-			if (sum > Integer.parseInt(result))	
-				sum = sum - Integer.parseInt(result);
+		public double subtraction() {
+			if (sum > Double.parseDouble(result))	
+				sum = sum - Double.parseDouble(result);
 			else
-				sum = Integer.parseInt(result) - sum;
+				sum = Double.parseDouble(result) - sum;
+			return sum;
+		}
+		public double multiplication() {
+			if(sum == 0) {
+				sum = Double.parseDouble(result);
+			}
+			else {
+				sum = sum*Double.parseDouble(result);
+			}
+			return sum;
+		}
+		public double division(JTextField display) {
+			if(sum == 0) {
+				sum = Double.parseDouble(result);
+			}
+			else {
+				try {
+					sum = sum / Double.parseDouble(result);
+				}
+				catch(Exception ex) {
+					display.setText(ex.toString());
+				}
+			}
 			return sum;
 		}
 		public void actionPerformed(ActionEvent e, JTextField display) {
 			// TODO Auto-generated method stub
 			
-			if(!e.getActionCommand().equals("+") && !e.getActionCommand().equals("=") && !e.getActionCommand().equals("-") && !e.getActionCommand().equals("C")) {
+			if(!e.getActionCommand().equals("+") && !e.getActionCommand().equals("=") && !e.getActionCommand().equals("-") && !e.getActionCommand().equals("Clear") && !e.getActionCommand().equals("x") && !e.getActionCommand().equals("/")) {
 				System.out.println("action in if: ");
 				System.out.println("   result: "+result);
 				display.setText(display.getText()+e.getActionCommand());
@@ -84,24 +108,82 @@ ArrayList<String> operator = new ArrayList<String>();
 					}
 				}
 			}
+			else if (e.getActionCommand().equals("x")) {
+				System.out.println("in mul");
+				operator.add(e.getActionCommand());
+				display.setText(display.getText()+e.getActionCommand());
+				if(!operator.contains("/") && operator.contains("x")) {
+					if(!result.isEmpty()) {
+						System.out.println("   action in elseif x");
+						multiplication();
+						result = "";
+						System.out.println("   if action: "+ e.getActionCommand()+" result: "+result+" mul_res: "+sum+"\n");
+					}
+				}
+				else if (operator.contains("x") && operator.contains("/")) {
+					if(!result.isEmpty()) {
+						division(display);
+						result ="";
+						//subtraction();
+						System.out.println("   **x & / in x action: "+ e.getActionCommand()+" result: "+result+" div_res: "+sum+"\n");
+					}
+				}
+			}
+			else if (e.getActionCommand().equals("/")) {
+				System.out.println("in div");
+				operator.add(e.getActionCommand());
+				display.setText(display.getText()+e.getActionCommand());
+				if(!operator.contains("x") && operator.contains("/")) {
+					if(!result.isEmpty()) {
+						System.out.println("   action in elseif /");
+						division(display);
+						result = "";
+						System.out.println("   if action: "+ e.getActionCommand()+" result: "+result+" div_res: "+sum+"\n");
+					}
+				}
+				else if (operator.contains("x") && operator.contains("/")) {
+					if(!result.isEmpty()) {
+						multiplication();
+						result ="";
+						//subtraction();
+						System.out.println("   **x & / in / action: "+ e.getActionCommand()+" result: "+result+" mul_res: "+sum+"\n");
+					}
+				}
+			}
 			else if(e.getActionCommand().equals("=")) {
 				System.out.println("action in elseif =: "+ e.getActionCommand()+" operator: "+operator+" result: "+result);
 				if(operator.get(operator.size()-result.length()-1).equals("+")) {
 					addition();
 					System.out.println("   sum from +: "+sum+"\n");
-					display.setText(Integer.toString(sum));
+					display.setText(Double.toString(sum));
 					//operator.clear();
 				}
 				else if(operator.get(operator.size()-result.length()-1).equals("-")){
 					subtraction();
 					System.out.println("   sum from -: "+sum+"\n");
-					display.setText(Integer.toString(sum));
+					display.setText(Double.toString(sum));
 					//operator.clear();
+				}
+				else if(operator.get(operator.size()-result.length()-1).equals("x")){
+					multiplication();
+					System.out.println("   mul: "+sum+"\n");
+					display.setText(Double.toString(sum));
+					//operator.clear();
+				}
+				else if(operator.get(operator.size()-result.length()-1).equals("/")){
+					try {
+						division(display);
+						System.out.println("   div: "+sum+"\n");
+						display.setText(Double.toString(sum));
+					}
+					catch(Exception ex) {
+						display.setText(ex.toString());
+					}
 				}
 				result ="";
 
 			}
-			else if (e.getActionCommand().equals("C")) {
+			else if (e.getActionCommand().equals("Clear")) {
 				sum =0;
 				display.setText("");
 				operator.clear();
