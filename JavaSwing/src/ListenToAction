@@ -19,7 +19,7 @@ ArrayList<String> operator = new ArrayList<String>();
 				System.out.println("   result: "+result);
 				display.setText(display.getText()+e.getActionCommand());
 				result = result +e.getActionCommand();
-				System.out.println("   action: "+ e.getActionCommand()+" result: "+result+"\n");
+				System.out.println("   action: "+ e.getActionCommand()+" result: "+result+" result size: "+result.length()+"\n");
 				operator.add(e.getActionCommand());
 			}
 			else if(e.getActionCommand().equals("+")) {
@@ -31,13 +31,16 @@ ArrayList<String> operator = new ArrayList<String>();
 					sum = sum + Integer.parseInt(result);
 					result = "";
 					operator.add(e.getActionCommand());
-					System.out.println("   action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					System.out.println("   if action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					
 				}
 				else {
 					operator.add(e.getActionCommand());
 					display.setText(display.getText()+e.getActionCommand());
-					System.out.println("   action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					System.out.println("   else action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					result = "";
 				}
+				
 			}
 			else if(e.getActionCommand().equals("-")) {
 				if(!result.isEmpty()) {
@@ -52,38 +55,35 @@ ArrayList<String> operator = new ArrayList<String>();
 					result = "";
 					operator.add(e.getActionCommand());
 					
-					System.out.println("   action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum);
+					System.out.println("   if action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
 				}
 				else {
 					operator.add(e.getActionCommand());
 					display.setText(display.getText()+e.getActionCommand());
-					System.out.println("   action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					System.out.println("   else action: "+ e.getActionCommand()+" result: "+result+" sum: "+sum+"\n");
+					result = "";
 				}
 				
 			}
 			else if(e.getActionCommand().equals("=")) {
 				System.out.println("action in elseif =: "+ e.getActionCommand()+" operator: "+operator+" result: "+result);
-				if(operator.get(operator.size()-2).equals("+")) {
+				if(operator.get(operator.size()-result.length()-1).equals("+")) {
 					sum = sum + Integer.parseInt(result);
-					System.out.println("   sum: "+sum+"\n");
+					System.out.println("   sum from +: "+sum+"\n");
 					display.setText(Integer.toString(sum));
 					//operator.clear();
 				}
-				else {
+				else if(operator.get(operator.size()-result.length()-1).equals("-")){
 					if (sum > Integer.parseInt(result))	
 						sum = sum - Integer.parseInt(result);
 					else
 						sum = Integer.parseInt(result) - sum;
-					System.out.println("   sum: "+sum+"\n");
+					System.out.println("   sum from -: "+sum+"\n");
 					display.setText(Integer.toString(sum));
 					//operator.clear();
 				}
 				result ="";
-//				else if(operator.get(operator.size()-2).equals("-")) {
-//					sum = sum - Integer.parseInt(result);
-//					System.out.println("sum: "+sum);
-//					operator.clear();
-//				}
+
 			}
 			else if (e.getActionCommand().equals("C")) {
 				sum =0;
